@@ -39,8 +39,10 @@ public class AbstractEvent {
         this.publish(this.toJson());
     }
     public void publish(String json){
+        System.out.println("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@");
+        System.out.println(json);
+        System.out.println("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@");
         if( json != null ){
-
             /**
              * spring streams 방식
              */
