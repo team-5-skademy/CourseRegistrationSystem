@@ -25,6 +25,7 @@ public class PolicyHandler{
                 CourseRegistrationSystem courseRegistrationSystem = courseRegistrationSystemOptional.get();
                 System.out.println("2 ##" + courseRegistrationSystem + "##");
                 courseRegistrationSystem.setStatus("결제 완료");
+                courseRegistrationSystem.setStudentId(courseRegistrationSystem.getStudentId());
 
                 courseRegistrationSystemRepository.save(courseRegistrationSystem);
 
