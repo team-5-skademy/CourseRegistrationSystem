@@ -2,7 +2,6 @@ package skademy;
 
 import javax.persistence.*;
 import org.springframework.beans.BeanUtils;
-import java.util.List;
 
 @Entity
 @Table(name="CourseRegistrationSystem_table")
@@ -21,14 +20,22 @@ public class CourseRegistrationSystem {
         BeanUtils.copyProperties(this, courseRegistered);
         courseRegistered.publish();
 
+        this.setLectureId(courseRegistered.getLectureId());
+        this.setStudentId(12334);
+        this.setStatus("수강신청중");
+
+        System.out.println("##### POST CourseRegistrationSystem 수강신청 : " + this);
+
         //Following code causes dependency to external APIs
         // it is NOT A GOOD PRACTICE. instead, Event-Policy mapping is recommended.
 
-//        CourseRegistrationSystem courseRegistrationSystem = new CourseRegistrationSystem();
-//        // mappings goes here
-//        Application.applicationContext.getBean(CourseRegistrationSystemService.class)
-//            .makePayment(courseRegistrationSystem);
+        PaymentSystem paymentSystem = new PaymentSystem();
+        paymentSystem.setCourseId(this.id);
+        // mappings goes here
 
+        //결제 시작
+        PaymentService paymentService = Application.applicationContext.getBean(PaymentService.class);
+        paymentService.makePayment(paymentSystem);
 
     }
 
