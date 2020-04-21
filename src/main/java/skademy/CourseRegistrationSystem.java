@@ -29,7 +29,6 @@ public class CourseRegistrationSystem {
         //Following code causes dependency to external APIs
         // it is NOT A GOOD PRACTICE. instead, Event-Policy mapping is recommended.
 
-
         PaymentSystem paymentSystem = new PaymentSystem();
         paymentSystem.setCourseId(this.id);
         // mappings goes here
