@@ -24,10 +24,10 @@ public class CourseRegistrationSystem {
         //Following code causes dependency to external APIs
         // it is NOT A GOOD PRACTICE. instead, Event-Policy mapping is recommended.
 
-        skademy.external.CourseRegistrationSystem courseRegistrationSystem = new skademy.external.CourseRegistrationSystem();
-        // mappings goes here
-        Application.applicationContext.getBean(skademy.external.CourseRegistrationSystemService.class)
-            .makePayment(courseRegistrationSystem);
+//        CourseRegistrationSystem courseRegistrationSystem = new CourseRegistrationSystem();
+//        // mappings goes here
+//        Application.applicationContext.getBean(CourseRegistrationSystemService.class)
+//            .makePayment(courseRegistrationSystem);
 
 
     }

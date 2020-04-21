@@ -1,10 +1,13 @@
-
 package skademy;
 
 public class PaymentCompleted extends AbstractEvent {
 
     private Long id;
     private Long courseId;
+
+    public PaymentCompleted(){
+        super();
+    }
 
     public Long getId() {
         return id;
