@@ -1,0 +1,12 @@
+skademy\CourseCanceled.class
+skademy\CourseRegistrationSystem.class
+skademy\Application.class
+skademy\PaymentCompleted.class
+skademy\CourseRegistrationCompleted.class
+skademy\PolicyHandler.class
+skademy\OpenedCanceled.class
+skademy\CourseRegistered.class
+skademy\CourseRegistrationSystemRepository.class
+skademy\AbstractEvent.class
+skademy\config\kafka\KafkaProcessor.class
+skademy\CourseRegistrationSystemController.class

@@ -8,14 +8,30 @@ import org.springframework.cloud.stream.annotation.StreamListener;
 import org.springframework.messaging.handler.annotation.Payload;
 import org.springframework.stereotype.Service;
 
+import java.util.Optional;
+
 @Service
 public class PolicyHandler{
+    @Autowired
+    CourseRegistrationSystemRepository courseRegistrationSystemRepository;
     
     @StreamListener(KafkaProcessor.INPUT)
     public void wheneverPaymentCompleted_수강신청완료(@Payload PaymentCompleted paymentCompleted){
+        try {
+            if (paymentCompleted.isMe()) {
+                System.out.println("##### listener 수강신청완료 : " + paymentCompleted.toJson());
+                System.out.println("1 ##" + paymentCompleted.getCourseId() + "##");
+                Optional<CourseRegistrationSystem> courseRegistrationSystemOptional = courseRegistrationSystemRepository.findById(paymentCompleted.getCourseId());
+                CourseRegistrationSystem courseRegistrationSystem = courseRegistrationSystemOptional.get();
+                System.out.println("2 ##" + courseRegistrationSystem + "##");
+                courseRegistrationSystem.setStatus("결제 완료");
 
-        if(paymentCompleted.isMe()){
-            System.out.println("##### listener 수강신청완료 : " + paymentCompleted.toJson());
+                courseRegistrationSystemRepository.save(courseRegistrationSystem);
+
+
+            }
+        }catch(Exception e) {
+
         }
     }
     @StreamListener(KafkaProcessor.INPUT)
